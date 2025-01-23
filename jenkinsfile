@@ -49,7 +49,9 @@ pipeline {
         }
 
         stage('CODE ANALYSIS with SONARQUBE') {
-
+            environment {
+                scannerHome = tool 'mysonarscanner4'
+            }
             steps {
                 withSonarQubeEnv('sonar-pro') {
                     sh '''${scannerHome}/bin/sonar-scanner \
